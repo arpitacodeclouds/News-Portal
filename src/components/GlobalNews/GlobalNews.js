@@ -9,14 +9,19 @@ function GlobalNews(loactionDetails) {
         console.log(e.target.value)
         setCountry(e.target.value);
     }
-    
+    let config = {
+        mode:"cors",
+        headers:{
+          "Content-Type":"application/x-www-form-urlencoded"
+        }
+      }
     const apiKey = process.env.REACT_APP_API_KEY;
     let country_code = countryDetail ? countryDetail : (loactionDetails.locationDetails.country_code ? loactionDetails.locationDetails.country_code : 'in');
     //for sports
     useEffect(() => {
         axios
         .get(
-            `https://newsapi.org/v2/top-headlines?country=${country_code}&category=sports&apiKey=${apiKey}`
+            `https://newsapi.org/v2/top-headlines?country=${country_code}&category=sports&apiKey=${apiKey}`,config
         )
         .then((response) => setSportsData(response.data))
         .catch((error) => console.log(error));

@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from 'react';
-// import axios from "axios";
-// import Header from "../../components/Header/Header";
-// import Footer from "../../components/Footer/Footer";
+import React from 'react';
 import GlobalNews from "../GlobalNews/GlobalNews";
 
 import  couuntries from "../../countries.json";

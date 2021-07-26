@@ -13,21 +13,27 @@ export const NewsContextProvider = (props) => {
     const apiKey = process.env.REACT_APP_API_KEY;
 
     const [locationDetails, setDetails] = useState(null);
+    let config = {
+        mode:"cors",
+        headers:{
+          "Content-Type":"application/x-www-form-urlencoded"
+        }
+      }
     useEffect(() => {
         fetch(
             "https://geolocation-db.com/json/"
         )
-            .then(response => response.json())
-            .then((data) => {
-                setDetails(data)
-            });
+        .then(response => response.json())
+        .then((data) => {
+            setDetails(data)
+        });
     }, []);
     let country_code = locationDetails ? locationDetails.country_code : 'in';
     //local region news
     useEffect(() => {
         axios
         .get(
-            `https://newsapi.org/v2/top-headlines?country=${country_code}&apiKey=${apiKey}`
+            `https://newsapi.org/v2/top-headlines?country=${country_code}&apiKey=${apiKey}`,config
         )
         .then((response) => setData(response.data))
         .catch((error) => console.log(error));
@@ -37,7 +43,7 @@ export const NewsContextProvider = (props) => {
     useEffect(() => {
         axios
         .get(
-            `https://newsapi.org/v2/top-headlines?country=${country_code}&category=sports&apiKey=${apiKey}`
+            `https://newsapi.org/v2/top-headlines?country=${country_code}&category=sports&apiKey=${apiKey}`,config
         )
         .then((response) => setSportsData(response.data))
         .catch((error) => console.log(error));
@@ -47,7 +53,7 @@ export const NewsContextProvider = (props) => {
     useEffect(() => {
         axios
         .get(
-            `https://newsapi.org/v2/top-headlines?country=${country_code}&category=business&apiKey=${apiKey}`
+            `https://newsapi.org/v2/top-headlines?country=${country_code}&category=business&apiKey=${apiKey}`,config
         )
         .then((response) => setBusinessData(response.data))
         .catch((error) => console.log(error));
@@ -56,7 +62,7 @@ export const NewsContextProvider = (props) => {
     useEffect(() => {
         axios
         .get(
-            `https://newsapi.org/v2/top-headlines?country=${country_code}&category=entertainment&apiKey=${apiKey}`
+            `https://newsapi.org/v2/top-headlines?country=${country_code}&category=entertainment&apiKey=${apiKey}`,config
         )
         .then((response) => setEntertainmentData(response.data))
         .catch((error) => console.log(error));
@@ -65,7 +71,7 @@ export const NewsContextProvider = (props) => {
     useEffect(() => {
         axios
         .get(
-            `https://newsapi.org/v2/top-headlines?country=${country_code}&category=technology&apiKey=${apiKey}`
+            `https://newsapi.org/v2/top-headlines?country=${country_code}&category=technology&apiKey=${apiKey}`,config
         )
         .then((response) => setTechnologyData(response.data))
         .catch((error) => console.log(error));
@@ -74,7 +80,7 @@ export const NewsContextProvider = (props) => {
     useEffect(() => {
         axios
         .get(
-            `https://newsapi.org/v2/top-headlines?country=${country_code}&category=politics&apiKey=${apiKey}`
+            `https://newsapi.org/v2/top-headlines?country=${country_code}&category=politics&apiKey=${apiKey}`,config
         )
         .then((response) => setPoliticsData(response.data))
         .catch((error) => console.log(error));
