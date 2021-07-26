@@ -10,7 +10,7 @@ export const NewsContextProvider = (props) => {
     const [entertainmentdata, setEntertainmentData] = useState();
     const [technologydata, setTechnologyData] = useState();
     const [politicsdata, setPoliticsData] = useState();
-    const apiKey = process.env.REACT_APP_API_KEY;
+    const apigitKey = process.env.REACT_APP_API_KEY;
 
     const [locationDetails, setDetails] = useState(null);
     let config = {

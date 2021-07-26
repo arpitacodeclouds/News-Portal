@@ -19,7 +19,7 @@ const Header = ({categorySearch,location}) => {
             </div>
             <div className="main_menu_area">
                 <ul id="nav">
-                    <li onClick={() => categorySearch('')}><a href="/">Home</a></li>
+                    <li onClick={() => categorySearch('')}>Home</li>
                     <li onClick={() => categorySearch('world-news')}>world news</li>
                     <li onClick={() => categorySearch('sports')}>sports</li>
                     <li onClick={() => categorySearch('technology')}>tech</li>

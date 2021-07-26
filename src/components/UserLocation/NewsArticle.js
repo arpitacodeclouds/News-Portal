@@ -13,11 +13,13 @@ function NewsArticle({ allNews }) {
 
   return (
     <div className="content_area">
+      {(!sportsNews.length || !sportsNews.length || !entertainmentNews.length || !setTechnologyData.length || !businessData.length || !politicsData.length) ? <div className="error-message">Something went wrong</div> :
+      <>
       <div className="main_content floatleft">
         <div className="left_coloum floatleft">
             <div className="single_left_coloum_wrapper">
                 <h2 className="title">local   news</h2>
-                {localNews && localNews.map((item, i) => (
+                {localNews.length && localNews.map((item, i) => (
                   <div className="single_left_coloum floatleft" key={item.url}> <img src={item.urlToImage} alt="" />
                       <h4>{item.title}</h4>
                       <p>{item.content ? item.content : item.description}</p>
@@ -26,7 +28,8 @@ function NewsArticle({ allNews }) {
             </div>
             <div className="single_left_coloum_wrapper">
                 <h2 className="title">sports  articles</h2>
-                {sportsNews && sportsNews.map((item, i) => (
+                {
+                sportsNews.length && sportsNews.map((item, i) => (
                   <div className="single_left_coloum floatleft" key={item.url}> <img src={item.urlToImage} alt="" />
                       <h4>{item.title}</h4>
                       <p>{item.content ? item.content : item.description}</p>
@@ -36,20 +39,20 @@ function NewsArticle({ allNews }) {
             
             <div className="single_left_coloum_wrapper single_cat_left">
                 <h2 className="title">tech news</h2>
-                {setTechnologyData && setTechnologyData.map((item, i) => (
+                {setTechnologyData.length && setTechnologyData.map((item, i) => (
                   <div className="single_cat_left_content floatleft" key={item.url}> 
                       <h4>{item.title}</h4>
                       <p>{item.content ? item.content : item.description}</p>
                       <p className="single_cat_left_content_meta"></p>
                   </div>
                 ))}
-            </div>
+            </div> 
         </div>
         <div className="right_coloum floatright">
             <div className="single_right_coloum">
                 <h2 className="title">entertainment</h2>
                 <ul>
-                  {entertainmentNews && entertainmentNews.map((item, i) => (
+                  {entertainmentNews.length && entertainmentNews.map((item, i) => (
                     <li>
                       <div className="single_cat_right_content">
                           <h3>{item.title}</h3>
@@ -63,7 +66,7 @@ function NewsArticle({ allNews }) {
             <div className="single_right_coloum">
                 <h2 className="title">business</h2>
                 <ul>
-                  {businessData && businessData.map((item, i) => (
+                  {businessData.length ? businessData.map((item, i) => (
                     <li>
                       <div className="single_cat_right_content">
                           <h3>{item.title}</h3>
@@ -71,31 +74,31 @@ function NewsArticle({ allNews }) {
                           <p className="single_cat_right_content_meta"></p>
                       </div>
                     </li>
-                    ))}
+                    )) : <div className="error-message">Something went wrong</div>}
                 </ul>
             </div>
         </div>
-    </div>
-    <div className="sidebar floatright">
-      <div className="single_sidebar">
-          <div className="popular">
-          <h2 className="title">Politics</h2>
-          <ul>
-            {politicsData && politicsData.map((item, i) => (
-              <li>
-                <div className="single_popular">
-                    {/* <p>Sept 24th 2045</p>
-                    <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit </h3> */}
-                    <h4>{item.title}</h4>
-                    <p>{item.content ? item.content : item.description}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-          </div>
       </div>
+      <div className="sidebar floatright">
+        <div className="single_sidebar">
+            <div className="popular">
+            <h2 className="title">Politics</h2>
+            <ul>
+              {politicsData.length && politicsData.map((item, i) => (
+                <li>
+                  <div className="single_popular">
+                      <h4>{item.title}</h4>
+                      <p>{item.content ? item.content : item.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            </div>
+        </div>
+      </div>
+      </>
+      }
     </div>
-  </div>
   );
 }
 
